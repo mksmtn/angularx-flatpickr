@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+export type ClickBehaviour = 'open' | 'toggle' | 'nothing';
+
 export type DisableEnableDate =
   | string
   | Date
@@ -41,10 +43,13 @@ export interface FlatpickrDefaultsInterface {
   ariaDateFormat?: string;
 
   /**
-   * Whether clicking on the input should open the picker.
-   * You could disable this if you wish to open the calendar manually `with.open()`.
+   * What should clicking on the input do.
+   * Options are:
+   * "open" (default) -- open the picker;
+   * "toggle" -- toggle the picker;
+   * "nothing" -- do nothing if you wish to open the calendar manually `with.open()`.
    */
-  clickOpens?: boolean;
+  clickBehaviour?: ClickBehaviour;
 
   /**
    * A string of characters which are used to define how the date will be displayed in the input box.
@@ -226,10 +231,13 @@ export class FlatpickrDefaults implements FlatpickrDefaultsInterface {
   ariaDateFormat?: string = 'F j, Y';
 
   /**
-   * Whether clicking on the input should open the picker.
-   * You could disable this if you wish to open the calendar manually `with.open()`.
+   * What should clicking on the input do.
+   * Options are:
+   * "open" (default) -- open the picker;
+   * "toggle" -- toggle the picker;
+   * "nothing" -- do nothing if you wish to open the calendar manually `with.open()`.
    */
-  clickOpens: boolean = true;
+  clickBehaviour: ClickBehaviour = 'open';
 
   /**
    * A string of characters which are used to define how the date will be displayed in the input box.
